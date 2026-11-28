@@ -86,5 +86,7 @@ namespace OpenLoco::Scenario
         uint8_t riverMeanderRate;
     };
 
+    [[nodiscard]] bool isCompleteScenario(const Options& options);
+
     Options& getOptions();
 }
