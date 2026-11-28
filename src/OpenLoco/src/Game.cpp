@@ -379,8 +379,21 @@ namespace OpenLoco::Game
                 return;
             }
 
+            // A scenario that was saved before finishing the editor steps is only a
+            // landscape, so offer to edit it rather than start it as a scenario.
+            const auto options = S5::readScenarioOptions(path);
+            if (options != nullptr && !Scenario::isCompleteScenario(*options))
+            {
+                if (!Ui::Windows::PromptOkCancel::open(StringIds::title_dropped_file, StringIds::load_landscape_file_prompt, args, StringIds::load_landscape_file_confirm))
+                {
+                    return;
+                }
+
+                SceneManager::requestSceneLoad(SceneManager::SceneId::editor, path, S5::LoadFlags::landscape);
+                return;
+            }
+
             // Prompt to play scenario.
-            // TODO check that it is a scenario and not just a 'landscape'
 
             if (!Ui::Windows::PromptOkCancel::open(StringIds::title_dropped_file, StringIds::load_scenario_file_prompt, args, StringIds::load_scenario_file_confirm))
             {

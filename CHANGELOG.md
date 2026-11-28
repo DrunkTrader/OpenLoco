@@ -25,6 +25,7 @@
 - Fix: [#4087] Industries with zero production are using singular cargo unit strings.
 - Fix: [#4096] Numeric keypad Enter key does not confirm text input and save prompts.
 - Fix: [#4101] The intro does not play when starting the game with --intro.
+- Fix: [#4110] Dropped landscape SC5 files are opened in the Scenario Editor instead of being started as scenarios.
 
 26.09 (2026-09-18)
 ------------------------------------------------------------------------
